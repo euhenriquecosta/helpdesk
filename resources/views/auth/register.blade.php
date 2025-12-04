@@ -1,4 +1,6 @@
 <x-layout.app>
+    <x-slot:title>Register</x-slot:title>
+
     <h1>Register</h1>
 
     @if (session('message'))
