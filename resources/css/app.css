@@ -1,13 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
-@source '../**/*.js';
 
 @theme {
-    --font-sans:
-        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+    --font-lato: "Lato", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--font-lato);
+
+    --color-gray-100: #151619;
+    --color-gray-200: #1e2024;
+    --color-gray-300: #535964;
+    --color-gray-400: #858b99;
+    --color-gray-500: #e3e5e8;
+
+    --text-xss: 10px;
 }
