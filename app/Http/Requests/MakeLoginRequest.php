@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -29,15 +28,8 @@ class MakeLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['string', 'email'],
-            'password' => ['string'],
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string', 'min:8'],
         ];
-    }
-
-    public function attempt(): bool
-    {
-        $user = User::whereEmail($this->email)->first();
-
-        return false;
     }
 }

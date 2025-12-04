@@ -1,6 +1,10 @@
 <x-layout.app>
     <h1>Login</h1>
 
+    @if (session('message'))
+        <span>{{ session('message') }}</span>
+    @endif
+
     <form action="{{ route('login') }}" method="POST">
         @csrf
 
