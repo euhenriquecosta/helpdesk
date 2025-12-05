@@ -44,9 +44,15 @@
                                 autocomplete='password'
                                 required
                             />
+
+                            @session('message')
+                                <span class="text-sm text-feedback-danger block"> {{ session('message') }} </span>
+                            @endsession
                         </div>
 
                         <x-button type='submit'>Entrar</x-button>
+
+
                     </form>
                 </x-card>
 

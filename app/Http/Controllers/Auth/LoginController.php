@@ -23,10 +23,10 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect('dashboard')->with(['message' => 'Login deu certo']);
+            return redirect('dashboard');
         }
 
-        return back()->with(['message' => 'Login não deu certo']);
+        return back()->with(['message' => 'E-mail ou senha incorretos!']);
     }
 
     public function destroy(Request $request)

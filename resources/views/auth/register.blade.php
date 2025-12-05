@@ -22,7 +22,7 @@
                         <h1 class="text-lg text-gray-200 font-bold">Crie sua conta</h1>
                         Informe seu nome, e-mail e senha
                     </span>
-                    <form method="POST" action="{{ route('login') }}" class="space-y-10">
+                    <form method="POST" action="{{ route('register') }}" class="space-y-10">
                         @csrf
 
                         <div class="flex flex-col space-y-4">
@@ -53,6 +53,9 @@
                                 required
                             />
 
+                            @session('message')
+                                <span class="text-sm text-feedback-danger block"> {{ session('message') }} </span>
+                            @endsession
                         </div>
 
                         <x-button type='submit'>Cadastrar</x-button>

@@ -38,7 +38,7 @@
             </footer>
         </aside>
 
-        <main class="bg-white text-gray-100 rounded-tl-2xl px-12 py-13">
+        <main {{ $attributes->class(["bg-white text-gray-100 rounded-tl-2xl px-12 py-13"]) }}>
             {{ $slot }}
         </main>
     </div>

@@ -17,7 +17,7 @@
 @endphp
 
 <{{ $tag }}
-    {{ $attributes->merge(['class' => $variants['base'] . $variants[$key]]) }}
+    {{ $attributes->merge(['class' => $variants['base'] . ' ' . $variants[$key]]) }}
 >
     {{ $slot }}
 </{{ $tag }}>
