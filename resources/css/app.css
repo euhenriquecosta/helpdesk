@@ -28,7 +28,3 @@
     --text-md: 16px;
     --text-xss: 10px;
 }
-
-button {
-    @apply cursor-pointer;
-}

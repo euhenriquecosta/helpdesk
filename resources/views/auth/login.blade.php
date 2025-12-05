@@ -7,9 +7,9 @@
         class="absolute inset-0 w-full h-full object-cover"
         alt="Fundo da marca"
       />
-      <!-- Seu conteúdo aqui -->
+
       <main class="absolute right-0 z-10 h-full">
-          <div class="relative bg-white h-full mt-4 rounded-l-2xl min-w-2xl px-36 py-12 space-y-8 justify-center">
+          <div class="relative bg-white h-full w-screen rounded-t-2xl p-6 mt-8 sm:mt-4 sm:w-2xl sm:rounded-l-2xl sm:rounded-t-none sm:px-36 sm:py-12 space-y-8 justify-center">
             <img
                 src="/brand/nav-header.svg"
                 class="object-cover h-10 w-auto place-self-center"
@@ -56,7 +56,7 @@
                         Cadastre agora mesmo
                     </span>
 
-                    <x-button tag='a' variant="ghost">Criar conta</x-button>
+                    <x-button tag='a' href="{{ route('register') }}" variant="ghost">Criar conta</x-button>
                 </x-card>
             </div>
         </div>
