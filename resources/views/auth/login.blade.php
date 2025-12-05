@@ -15,42 +15,49 @@
                 class="object-cover h-10 w-auto place-self-center"
             />
 
-            <div>
+            <div class="space-y-3">
+                <!--Card-->
+                <x-card class="flex-col space-y-10">
+                    <span class="text-xs text-gray-300">
+                        <h1 class="text-lg text-gray-200 font-bold">Acesse o portal</h1>
+                        Entre usando seu e-mail e senha cadastrados
+                    </span>
 
-            <!--Card-->
-            <x-card class="flex-col space-y-10">
-                <span class="text-xs text-gray-300">
-                    <h1 class="text-lg text-gray-200 font-bold">Acesse o portal</h1>
-                    Entre usando seu e-mail e senha cadastrados
-                </span>
+                    <form method="POST" action="{{ route('login') }}" class="space-y-10">
+                        @csrf
 
-                <form method="POST" action="{{ route('login') }}" class="space-y-10">
-                    @csrf
+                        <div class="flex flex-col space-y-4">
+                            <x-form.input
+                                label='E-mail'
+                                name='email'
+                                type='email'
+                                placeholder='exemplo@mail.com'
+                                autocomplete='email'
+                                required
+                            />
 
-                    <div class="flex flex-col space-y-4">
-                        <x-form.input
-                            label='E-mail'
-                            name='email'
-                            type='email'
-                            placeholder='exemplo@mail.com'
-                            autocomplete='email'
-                            required
-                        />
+                            <x-form.input
+                                label='Senha'
+                                name='password'
+                                type='password'
+                                placeholder='Digite sua senha...'
+                                autocomplete='password'
+                                required
+                            />
+                        </div>
 
-                        <x-form.input
-                            label='Senha'
-                            name='password'
-                            type='password'
-                            placeholder='Digite sua senha...'
-                            autocomplete='password'
-                            required
-                        />
-                    </div>
+                        <x-button type='submit'>Entrar</x-button>
+                    </form>
+                </x-card>
 
-                    <x-form.button type="submit">Entrar</x-form.button>
-                </form>
-            </x-card>
+                <x-card class="flex-col space-y-6">
+                    <span class="text-xs text-gray-300">
+                        <h1 class="text-md text-gray-200 font-bold">Ainda não tem uma conta?</h1>
+                        Cadastre agora mesmo
+                    </span>
 
+                    <x-button tag='a' variant="ghost">Criar conta</x-button>
+                </x-card>
             </div>
         </div>
     </main>
