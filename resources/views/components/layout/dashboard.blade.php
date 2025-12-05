@@ -16,19 +16,19 @@
             </header>
 
             <nav class="flex px-4 py-5 flex-col space-y-1">
-                <x-nav-item tag="a" icon="clipboard-list" class="justify-start gap-3 p-3" href="{{ route('tickets') }}">
+                <x-nav-item tag="a" icon="clipboard-list" class="justify-start gap-3 p-3" route="tickets">
                     Chamados
                 </x-nav-item>
 
-                <x-nav-item tag="a" icon="users" class="justify-start gap-3 p-3" href="{{ route('technicians') }}">
+                <x-nav-item tag="a" icon="users" class="justify-start gap-3 p-3" route="technicians">
                     Técnicos
                 </x-nav-item>
 
-                <x-nav-item tag="a" icon="briefcase-business" class="justify-start gap-3 p-3" href="{{ route('clients') }}">
+                <x-nav-item tag="a" icon="briefcase-business" class="justify-start gap-3 p-3" route="clients">
                     Clientes
                 </x-nav-item>
 
-                <x-nav-item tag="a" icon="wrench" class="justify-start gap-3 p-3" href="{{ route('services') }}">
+                <x-nav-item tag="a" icon="wrench" class="justify-start gap-3 p-3" route="services">
                     Serviços
                 </x-nav-item>
             </nav>

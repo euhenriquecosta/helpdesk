@@ -1,14 +1,16 @@
 @props([
     'icon' => 'menu',
-    'href' => '#',
+    'route' => '#',
 ])
 
 @php
-    $active = request()->path() === ltrim($href, '/');
+    $active = $route
+        ? request()->routeIs($route)
+        : request()->fullUrl() === $href;
 @endphp
 
 <a
-    href="{{ $href }}"
+    href="{{ $route ? route($route) : $href }}"
     @class([
         'flex items-center justify-start rounded gap-3 p-3',
         'bg-blue-dark text-gray-600' => $active,
