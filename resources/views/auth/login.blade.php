@@ -28,38 +28,26 @@
                     @csrf
 
                     <div class="flex flex-col space-y-4">
-                        <div class="group">
-                            <label for="email" class="uppercase text-gray-300 group-focus-within:text-indigo-500 transition-colors text-xss block">E-mail</label>
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                placeholder="exemplo@mail.com"
-                                class="h-10 w-full text-sm text-gray-200
-                                       border-0 border-b border-gray-500
-                                       placeholder:text-gray-400 placeholder:text-sm
-                                       focus:outline-none focus:border-indigo-500 focus:border-b-2 transition-colors"
-                            />
-                            @error('email')
-                                <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span>
-                            @enderror
+                        <x-form.input
+                            label='E-mail'
+                            name='email'
+                            type='email'
+                            placeholder='exemplo@mail.com'
+                            autocomplete='email'
+                            required
+                        />
 
-                        </div>
-
-                        <div class="group">
-                            <label for="password" class="uppercase text-gray-300 group-focus-within:text-indigo-500 transition-colors text-xss block">Senha</label>
-                            <input type="password" name="password" id="password" placeholder="Digite sua senha..."     class="h-10 w-full text-sm text-gray-200
-                                   border-0 border-b border-gray-500
-                                   placeholder:text-gray-400 placeholder:text-sm
-                                   focus:outline-none focus:border-indigo-500 focus:border-b-2 transition-colors" />
-                            @error('password')
-                                <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        <x-form.input
+                            label='Senha'
+                            name='password'
+                            type='password'
+                            placeholder='Digite sua senha...'
+                            autocomplete='password'
+                            required
+                        />
                     </div>
 
-
-                    <button type="submit" class="bg-gray-100 h-10 w-full rounded-md text-sm">Entrar</button>
+                    <x-form.button type="submit">Entrar</x-form.button>
                 </form>
             </x-card>
 
