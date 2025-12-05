@@ -3,12 +3,15 @@
     <head>
     	<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>{{ $title ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
+
+    	<title>{{ isset($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
 
     	@vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body>
-        {{ $slot }}
+        <main class="h-screen bg-gray-100">
+            {{ $slot }}
+        </main>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <x-layout.app>
     <x-slot:title>Login</x-slot:title>
 
-    <div class="relative h-screen overflow-hidden">
+    <div class="relative h-full overflow-hidden">
       <img
         src="/brand/background.png"
         class="absolute inset-0 w-full h-full object-cover"
