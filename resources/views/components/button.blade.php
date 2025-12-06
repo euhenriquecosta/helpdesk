@@ -5,8 +5,8 @@
 
 @php
     $variants = [
-        'base' => 'flex gap-2 items-center justify-center h-10 w-full rounded-md text-sm cursor-pointer',
-        'default' => 'bg-gray-100',
+        'base' => 'flex gap-2 items-center justify-center h-10 rounded-md text-sm cursor-pointer',
+        'default' => 'bg-gray-100 text-gray-600',
         'ghost' => 'bg-gray-500 text-gray-200',
         'destructive' => 'bg-feedback-danger',
     ];

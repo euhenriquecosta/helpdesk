@@ -50,7 +50,7 @@
                             @endsession
                         </div>
 
-                        <x-button type='submit'>Entrar</x-button>
+                        <x-button class="w-full" type='submit'>Entrar</x-button>
 
 
                     </form>
