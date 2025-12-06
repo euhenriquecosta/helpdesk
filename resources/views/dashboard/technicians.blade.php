@@ -4,19 +4,19 @@
             'id' => '00001',
             'name' => 'André Costa',
             'email' => 'andrecosta@gmail.com',
-            'disponibility' => ['7', '8', '10', '14', '15', '16'],
+            'disponibility' => ['7', '8', '10', '14', '15'],
         ],
         [
             'id' => '00002',
             'name' => 'André Costa',
             'email' => 'andrecosta@gmail.com',
-            'disponibility' => ['7', '8', '10', '14', '15', '16'],
+            'disponibility' => ['7', '8', '16'],
         ],
         [
             'id' => '00003',
             'name' => 'André Costa',
             'email' => 'andrecosta@gmail.com',
-            'disponibility' => ['7', '8', '10', '14', '15', '16'],
+            'disponibility' => ['7', '8', '10', '14', '15', '16', '17', '18'],
         ],
         [
             'id' => '00004',
@@ -62,20 +62,24 @@
                         <td class="px-4 py-4">
                             <span class="text-sm text-gray-200">{{ $technician['email'] }}</span>
                         </td>
-                        <td class="px-4 py-4">
+                        <td class="flex flex-wrap gap-1 px-4 py-4">
                             @foreach ($technician['disponibility'] as $hour)
                                 @php
-                                    [$h, $m] = explode(':', $hour);
-                                    $h = sprintf('%02d', $h);
-                                    $m = sprintf('%02d', $m);
+                                    $showedBadges = 3
                                 @endphp
 
-                                  <div class="p-2.5 rounded-full border border-gray-500 text-gray-400 text-xs w-fit">
-                                      {{ "$h:$m" }}
+                                @if ($loop->index < $showedBadges)
+                                  <div class="py-2 px-2.5 rounded-full border border-gray-500 text-gray-400 text-xs w-fit">
+                                      {{ sprintf('%02d:00', $hour) }}
                                   </div>
+                                @endif
+
+                                @if ($loop->last && $loop->index >= $showedBadges)
+                                    <div class="py-2 px-2.5 rounded-full border border-gray-500 text-gray-400 text-xs w-fit">
+                                        +{{ $loop->count - $showedBadges }}
+                                    </div>
+                                @endif
                             @endforeach
-
-
                         </td>
                         <td class="px-4 py-4">
                             <button class="flex items-center justify-center cursor-pointer size-7 bg-gray-500 rounded">
