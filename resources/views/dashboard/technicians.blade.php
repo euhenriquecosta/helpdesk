@@ -52,7 +52,7 @@
             <tbody>
                 <!-- Ticket 1 -->
                 @foreach ($technicians as $technician)
-                    <tr class="border-t border-dotted border-gray-500">
+                    <tr class="my-auto border-t border-dotted border-gray-500">
                         <td class="px-4 py-4">
                             <div class="flex items-center gap-2">
                                  <x-tickets.avatar :name="$technician['name']" />
@@ -62,20 +62,20 @@
                         <td class="px-4 py-4">
                             <span class="text-sm text-gray-200">{{ $technician['email'] }}</span>
                         </td>
-                        <td class="flex flex-wrap gap-1 px-4 py-4">
+                        <td class="flex items-center jusitfy-center flex-wrap gap-1 px-4 py-4">
                             @foreach ($technician['disponibility'] as $hour)
                                 @php
                                     $showedBadges = 3
                                 @endphp
 
                                 @if ($loop->index < $showedBadges)
-                                  <div class="py-2 px-2.5 rounded-full border border-gray-500 text-gray-400 text-xs w-fit">
+                                  <div class="flex items-center justify-center py-1 px-2.5 rounded-full border border-gray-500 text-gray-400 text-xss w-fit shrink-0">
                                       {{ sprintf('%02d:00', $hour) }}
                                   </div>
                                 @endif
 
                                 @if ($loop->last && $loop->index >= $showedBadges)
-                                    <div class="py-2 px-2.5 rounded-full border border-gray-500 text-gray-400 text-xs w-fit">
+                                    <div class="flex items-center justify-center px-3 py-1 rounded-full border border-gray-500 text-gray-400 text-xss w-fit shrink-0">
                                         +{{ $loop->count - $showedBadges }}
                                     </div>
                                 @endif

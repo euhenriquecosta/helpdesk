@@ -55,7 +55,7 @@
                 @foreach ($clients as $client)
                     <tr class="border-t border-dotted border-gray-500">
                         <td class="px-4 py-4">
-                            Instalação de Rede
+                            <span class="text-sm">Instalação de Rede</span>
                         </td>
                         <td class="px-4 py-4">
                             <span class="text-sm text-gray-200">
@@ -66,30 +66,30 @@
                             @switch($client['status'])
                                 @case('active')
                                     <div class="flex items-center gap-1 py-1.5 px-3.5 rounded-full w-fit bg-feedback-done/20 text-feedback-done">
-                                        <span class="text-sm">Ativo</span>
+                                        <span class="text-xs">Ativo</span>
                                     </div>
                                     @break
                                 @case('inactive')
                                     <div class="flex items-center gap-1 py-1.5 px-3.5 rounded-full w-fit bg-feedback-open/20 text-feedback-open">
-                                        <span class="text-sm">Inativo</span>
+                                        <span class="text-xs">Inativo</span>
                                     </div>
                                     @break
                                 @default
                                     <div class="flex items-center gap-1 py-1.5 px-3.5 rounded-full w-fit bg-gray-300/20 text-gray-300">
-                                        <span class="text-sm">?</span>
+                                        <span class="text-xs">?</span>
                                     </div>
                             @endswitch
                         </td>
                         <td class="flex items-center justify-end gap-3 px-4 py-4">
                             @switch($client['status'])
                                 @case('active')
-                                    <button class="flex items-center justify-center gap-1.5 p-2 cursor-pointer text-xs text-gray-300 hover:bg-gray-500/30 rounded">
-                                        <x-lucide-ban class="size-3.5" />
+                                    <button class="flex items-center justify-start gap-1.5 w-22 p-2 cursor-pointer text-xs text-gray-300 hover:bg-gray-500/30 rounded">
+                                        <x-lucide-ban class="size-3.5 shrink-0" />
                                         Desativar
                                     </button>
                                     @break
                                 @case('inactive')
-                                    <button class="flex items-center justify-center gap-1.5 p-2 cursor-pointer text-xs text-gray-300 hover:bg-gray-500/30 rounded">
+                                    <button class="flex items-center justify-start gap-1.5 w-22 p-2 cursor-pointer text-xs text-gray-300 hover:bg-gray-500/30 rounded">
                                         <x-lucide-circle-check class="size-3.5" />
                                         Reativar
                                     </button>

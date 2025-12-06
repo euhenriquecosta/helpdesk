@@ -5,6 +5,6 @@
     $initials = "$first[0]$secound[0]";
 @endphp
 
-<div class="flex items-center justify-center w-7 h-7 bg-blue-dark text-white rounded-full text-xs">
+<div class="flex items-center justify-center size-6 bg-blue-dark text-white rounded-full text-xs shrink-0">
     {{ $initials }}
 </div>
