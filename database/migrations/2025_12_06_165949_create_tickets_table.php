@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('amount');
+            $table->string('description');
+            $table->string('category');
             $table->foreignId('client_id')->constrained('users');
             $table->foreignId('technician_id')->constrained('users');
             $table->enum('status', ['open', 'in_progress', 'closed']);

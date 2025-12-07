@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'guest'], function () {
@@ -9,7 +10,7 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::view('/dashboard', 'dashboard');
 
-    Route::view('/dashboard/tickets', 'dashboard.tickets')->name('tickets');
+    Route::get('/dashboard/tickets', [TicketController::class, 'index'])->name('tickets');
     Route::view('/dashboard/technicians', 'dashboard.technicians')->name('technicians');
     Route::view('/dashboard/clients', 'dashboard.clients')->name('clients');
     Route::view('/dashboard/services', 'dashboard.services')->name('services');

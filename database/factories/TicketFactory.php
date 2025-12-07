@@ -20,8 +20,9 @@ class TicketFactory extends Factory
         $status = ['open', 'in_progress', 'closed'];
 
         return [
-            'title' => fake()->sentence(),
-            'amount' => fake()->numberBetween(10000, 100000),
+            'title' => fake()->title(),
+            'description' => fake()->sentence(),
+            'category' => fake()->title(),
             'client_id' => User::factory(),
             'technician_id' => User::factory(),
             'status' => $status[rand(0, 2)],

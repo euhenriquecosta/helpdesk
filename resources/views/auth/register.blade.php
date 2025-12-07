@@ -58,7 +58,7 @@
                             @endsession
                         </div>
 
-                        <x-button type='submit'>Cadastrar</x-button>
+                        <x-button type='submit' class="w-full">Cadastrar</x-button>
                     </form>
                 </x-card>
 
