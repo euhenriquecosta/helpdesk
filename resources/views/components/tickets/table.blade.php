@@ -74,25 +74,25 @@
             <!-- Ticket 1 -->
             @foreach ($tickets as $ticket)
                 <tr class="border-t border-dotted border-gray-500">
-                    <td class="px-4 py-4 text-sm">{{ \Carbon\Carbon::parse($ticket['updated_at'])->format('d/m/y H:i') }}</td>
-                    <td class="px-4 py-4 text-sm">{{ $ticket['id'] }}</td>
+                    <td class="px-4 py-4 text-xs">{{ \Carbon\Carbon::parse($ticket['updated_at'])->format('d/m/y H:i') }}</td>
+                    <td class="px-4 py-4 text-xs">{{ $ticket['id'] }}</td>
                     <td class="px-4 py-4">
-                        <div class="flex flex-col">
+                        <span class="flex flex-col">
                             <span class="text-sm font-bold">{{ $ticket['title'] }}</span>
                             <span class="text-xs">{{ $ticket['description'] }}</span>
-                        </div>
+                        </span>
                     </td>
-                    <td class="px-4 py-4 text-sm">R$ {{ number_format($ticket['amount']/100, 2, ',', '.') }}</td>
+                    <td class="px-4 py-4 text-xs">R$ {{ number_format($ticket['amount']/100, 2, ',', '.') }}</td>
                     <td class="px-4 py-4">
                         <div class="flex items-center gap-2">
                              <x-tickets.avatar :name="$ticket['client']" />
-                             <span class="text-sm">{{ $ticket['client'] }}</span>
+                             <span class="text-xs">{{ $ticket['client'] }}</span>
                          </div>
                     </td>
                     <td class="px-4 py-4">
                         <div class="flex items-center gap-2">
                             <x-tickets.avatar :name="$ticket['technicians']" />
-                            <span class="text-sm">{{ $ticket['technicians'] }}</span>
+                            <span class="text-xs">{{ $ticket['technicians'] }}</span>
                         </div>
                     </td>
                     <td class="px-4 py-4">

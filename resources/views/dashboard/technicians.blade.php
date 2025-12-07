@@ -56,7 +56,7 @@
                         <td class="px-4 py-4">
                             <div class="flex items-center gap-2">
                                  <x-tickets.avatar :name="$technician['name']" />
-                                 <span class="text-sm">{{ $technician['name'] }}</span>
+                                 <span class="text-xs">{{ $technician['name'] }}</span>
                              </div>
                         </td>
                         <td class="px-4 py-4">

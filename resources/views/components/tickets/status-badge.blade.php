@@ -17,6 +17,6 @@
 
 
 <div {{ $attributes->class([$variants['base'], $variants[$status]]) }}>
-    <x-lucide-circle-help class="size-4"/>
+    <x-lucide-circle-help class="size-3"/>
     <span class="text-xs">{{ $label }}</span>
 </div>
