@@ -42,10 +42,12 @@ php artisan create:user --admin      # create admin user
 ### Backend
 - **Laravel 12** on PHP 8.2+, SQLite database (dev), PostgreSQL (prod)
 - **Models:** `User` (roles: admin/member)
-- **Auth:** Custom `LoginController`/`RegisterController` with form request validation (`MakeLoginRequest`, `MakeRegisterRequest`), session-based
+- **Auth:** Custom controllers (`LoginController`, `RegisterController`, `ForgotPasswordController`, `ResetPasswordController`) with Form Request validation, session-based. Auto-login after registration. "Remember me" support on login.
+- **Password Reset:** Full forgot/reset password flow using Laravel's built-in `Password` broker. Routes: `password.request`, `password.email`, `password.reset`, `password.update`
+- **Rate Limiting:** `throttle:5,1` on login/register, `throttle:3,1` on password reset routes
 - **Authorization:** `AuthorizationServiceProvider` with Gates (`manage-users`), routes protected via `can:` middleware
 - **Controllers:** `SettingsController`, `UserController`
-- **Routes:** `routes/web.php` (auth middleware groups), `routes/auth.php` (guest routes)
+- **Routes:** `routes/web.php` (auth middleware groups), `routes/auth.php` (guest/auth routes)
 
 ### Frontend
 - **Blade components** in `resources/views/components/` — layouts (`layout.app`, `layout.dashboard`), form inputs, buttons, cards, modal, avatar, pagination, nav-item, user-menu
@@ -64,6 +66,7 @@ php artisan create:user --admin      # create admin user
 
 ### Database Schema
 - `users`: name, email, password, role (enum: admin/member)
+- `password_reset_tokens`: email, token, created_at (used by Password broker)
 - Sessions, cache, and jobs tables use database driver
 
 ### Deployment
@@ -75,6 +78,8 @@ php artisan create:user --admin      # create admin user
 ### Testing
 - PHPUnit with in-memory SQLite, array session/cache drivers
 - Test suites: `tests/Unit/`, `tests/Feature/`
+- Feature tests: `AuthTest`, `SettingsTest`, `UserManagementTest`, `PasswordResetTest`, `CreateUserCommandTest`
+- PHPFlasher consumes flash session data — do NOT use `assertSessionHas` for flash keys (`success`, `error`, etc.)
 
 ## Conventions
 

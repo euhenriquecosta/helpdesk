@@ -1,3 +1,24 @@
+# Project Context
+
+Laravel 12 starter template with role-based access (admin/member), settings management, user CRUD, and production-ready deployment (Docker + Octane).
+
+## Auth Flow
+- Custom controllers: `LoginController`, `RegisterController`, `ForgotPasswordController`, `ResetPasswordController`
+- All validation via Form Request classes (array-based rules, PHPDoc `@property-read` annotations)
+- Auto-login after registration (redirects to `/dashboard`)
+- "Remember me" support on login
+- Full forgot/reset password flow using Laravel's built-in `Password` broker
+- Rate limiting: `throttle:5,1` on login/register, `throttle:3,1` on password reset
+
+## Authorization
+- `AuthorizationServiceProvider` with Gate `manage-users` (admin only)
+- User CRUD routes protected via `can:manage-users` middleware
+
+## Testing
+- PHPUnit (NOT Pest) — feature tests: `AuthTest`, `SettingsTest`, `UserManagementTest`, `PasswordResetTest`, `CreateUserCommandTest`
+- PHPFlasher consumes flash session data — do NOT use `assertSessionHas` for flash keys (`success`, `error`, `warning`, `info`)
+- Use `UserFactory::admin()` state for admin user tests
+
 <laravel-boost-guidelines>
 === foundation rules ===
 
