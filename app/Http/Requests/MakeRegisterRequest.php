@@ -2,12 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Handle Register Request
- *
  * @property-read string $name
  * @property-read string $email
  * @property-read string $password
@@ -34,18 +31,5 @@ class MakeRegisterRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
         ];
-    }
-
-    public function attempt(): bool
-    {
-        $validated = $this->validated();
-
-        if (User::where('email', $validated['email'])->exists()) {
-            return false;
-        }
-
-        $user = User::create($validated);
-
-        return $user->exists;
     }
 }

@@ -49,13 +49,9 @@
                                 name='password'
                                 type='password'
                                 placeholder='Digite sua senha...'
-                                autocomplete='password'
+                                autocomplete='new-password'
                                 required
                             />
-
-                            @session('message')
-                                <span class="text-sm text-feedback-danger block"> {{ session('message') }} </span>
-                            @endsession
                         </div>
 
                         <x-button type='submit' class="w-full">Cadastrar</x-button>

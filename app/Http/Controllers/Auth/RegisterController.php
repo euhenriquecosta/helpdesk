@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MakeRegisterRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class RegisterController extends Controller
@@ -16,10 +18,10 @@ class RegisterController extends Controller
 
     public function store(MakeRegisterRequest $request): RedirectResponse
     {
-        if ($request->attempt()) {
-            return back()->with('success', 'Registro realizado com sucesso!');
-        }
+        $user = User::create($request->validated());
 
-        return back()->with('error', 'Falha ao realizar o registro.');
+        Auth::login($user);
+
+        return redirect('dashboard')->with('success', 'Registro realizado com sucesso!');
     }
 }
