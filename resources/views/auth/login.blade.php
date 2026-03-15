@@ -41,18 +41,23 @@
                                 name='password'
                                 type='password'
                                 placeholder='Digite sua senha...'
-                                autocomplete='password'
+                                autocomplete='current-password'
                                 required
                             />
+                        </div>
 
-                            @session('message')
-                                <span class="text-sm text-feedback-danger block"> {{ session('message') }} </span>
-                            @endsession
+                        <div class="flex items-center justify-between">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="remember" value="1" class="rounded border-gray-200 text-blue-base accent-blue-base" />
+                                <span class="text-xs text-gray-400">Lembrar-me</span>
+                            </label>
+
+                            <a href="{{ route('password.request') }}" class="text-xs text-blue-base hover:underline">
+                                Esqueceu a senha?
+                            </a>
                         </div>
 
                         <x-button class="w-full" type='submit'>Entrar</x-button>
-
-
                     </form>
                 </x-card>
 
