@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             MigrationsEnded::class,
             function () {
                 Artisan::call('ide-helper:generate');
-                Artisan::call('ide-helper:models', ['--nowrite' => true]);
+                Artisan::call('ide-helper:models', ['--nowrite' => true, '--reset' => true]);
             }
         );
     }

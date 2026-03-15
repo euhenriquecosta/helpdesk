@@ -1,20 +1,19 @@
 @props([
     'icon' => 'menu',
-    'route' => '#',
+    'route' => '',
 ])
 
 @php
-    $active = $route
-        ? request()->routeIs($route)
-        : request()->fullUrl() === $href;
+    $href = $route ? route($route) : '#';
+    $active = $route && request()->routeIs($route);
 @endphp
 
 <a
-    href="{{ $route ? route($route) : $href }}"
+    href="{{ $href }}"
     @class([
         'flex items-center justify-start rounded gap-3 p-3',
-        'bg-blue-dark text-gray-600' => $active,
-        'bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-500' => ! $active,
+        'bg-blue-dark text-gray-100' => $active,
+        'bg-gray-600 text-gray-300 hover:bg-gray-500 hover:text-gray-200' => ! $active,
     ])
 >
     <x-icon :name="'lucide-' . $icon" class="size-5" />

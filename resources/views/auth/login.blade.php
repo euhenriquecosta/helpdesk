@@ -18,8 +18,8 @@
             <div class="space-y-3">
                 <!--Card-->
                 <x-card class="flex-col space-y-10">
-                    <span class="text-xs text-gray-300">
-                        <h1 class="text-lg text-gray-200 font-bold">Acesse o portal</h1>
+                    <span class="text-xs text-gray-400">
+                        <h1 class="text-lg text-gray-500 font-bold">Acesse o portal</h1>
                         Entre usando seu e-mail e senha cadastrados
                     </span>
 
@@ -57,8 +57,8 @@
                 </x-card>
 
                 <x-card class="flex-col space-y-6">
-                    <span class="text-xs text-gray-300">
-                        <h1 class="text-md text-gray-200 font-bold">Ainda não tem uma conta?</h1>
+                    <span class="text-xs text-gray-400">
+                        <h1 class="text-md text-gray-500 font-bold">Ainda não tem uma conta?</h1>
                         Cadastre agora mesmo
                     </span>
 

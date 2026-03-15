@@ -18,8 +18,8 @@
             <div class="space-y-3">
                 <!--Card-->
                 <x-card class="flex-col space-y-10">
-                    <span class="text-xs text-gray-300">
-                        <h1 class="text-lg text-gray-200 font-bold">Crie sua conta</h1>
+                    <span class="text-xs text-gray-400">
+                        <h1 class="text-lg text-gray-500 font-bold">Crie sua conta</h1>
                         Informe seu nome, e-mail e senha
                     </span>
                     <form method="POST" action="{{ route('register') }}" class="space-y-10">
@@ -63,8 +63,8 @@
                 </x-card>
 
                 <x-card class="flex-col space-y-6">
-                    <span class="text-xs text-gray-300">
-                        <h1 class="text-md text-gray-200 font-bold">Já tem uma conta?</h1>
+                    <span class="text-xs text-gray-400">
+                        <h1 class="text-md text-gray-500 font-bold">Já tem uma conta?</h1>
                         Entre agora mesmo
                     </span>
 
