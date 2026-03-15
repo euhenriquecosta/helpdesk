@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteAccountRequest;
+use App\Http\Requests\UpdatePasswordRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\View\View;
 
 class SettingsController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $tab = $request->query('tab', 'profile');
 
@@ -28,40 +32,26 @@ class SettingsController extends Controller
         return view('settings.index', $data);
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(UpdateProfileRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email,'.Auth::id()],
-        ]);
-
-        Auth::user()->update($validated);
+        Auth::user()->update($request->validated());
 
         return redirect()->route('settings.index', ['tab' => 'profile'])
             ->with('success', 'Perfil atualizado com sucesso!');
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(UpdatePasswordRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', 'confirmed', Password::defaults()],
-        ]);
-
         Auth::user()->update([
-            'password' => Hash::make($validated['password']),
+            'password' => Hash::make($request->validated('password')),
         ]);
 
         return redirect()->route('settings.index', ['tab' => 'password'])
             ->with('success', 'Senha atualizada com sucesso!');
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeleteAccountRequest $request): RedirectResponse
     {
-        $request->validate([
-            'password' => ['required', 'current_password'],
-        ]);
-
         $user = Auth::user();
 
         Auth::logout();

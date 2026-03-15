@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRoleRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function store(Request $request): RedirectResponse
+    public function store(StoreUserRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'unique:users,email'],
-            'password' => ['required', 'confirmed', Password::defaults()],
-            'role' => ['required', 'in:member,admin'],
-        ]);
+        $validated = $request->validated();
 
         User::create([
             'name' => $validated['name'],
@@ -30,17 +25,13 @@ class UserController extends Controller
             ->with('success', 'Usuário criado com sucesso!');
     }
 
-    public function update(Request $request, User $user): RedirectResponse
+    public function update(UpdateUserRoleRequest $request, User $user): RedirectResponse
     {
         if ($user->id === auth()->id()) {
             return back()->with('error', 'Você não pode alterar sua própria função.');
         }
 
-        $validated = $request->validate([
-            'role' => ['required', 'in:member,admin'],
-        ]);
-
-        $user->update($validated);
+        $user->update($request->validated());
 
         return back()->with('success', 'Função atualizada com sucesso!');
     }

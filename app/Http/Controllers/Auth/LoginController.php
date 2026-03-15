@@ -29,7 +29,7 @@ class LoginController extends Controller
         return back()->with('error', 'E-mail ou senha incorretos!');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         if (Auth::check()) {
             Auth::logout();
