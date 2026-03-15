@@ -29,7 +29,7 @@
                             <x-form.input
                                 label='Nome'
                                 name='name'
-                                type='name'
+                                type='text'
                                 placeholder='Digite seu nome completo'
                                 autocomplete='name'
                                 required
