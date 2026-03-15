@@ -43,3 +43,48 @@ jobs:
 
       - name: Tests
         run: php artisan test --compact
+
+      - name: Upgrade Chrome Driver
+        run: php artisan dusk:chrome-driver --detect
+
+      - name: Set Chrome Driver permissions
+        run: chmod -R 0755 vendor/laravel/dusk/bin/
+
+      - name: Start Laravel server
+        run: php artisan serve --host=127.0.0.1 --port=8000 --no-reload > storage/logs/ci-server.log 2>&1 &
+
+      - name: Wait for server
+        run: |
+          for i in {1..30}; do
+            if curl --silent --fail http://127.0.0.1:8000 >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Laravel server did not become ready in time."
+          exit 1
+
+      - name: Dusk Tests
+        env:
+          APP_URL: http://127.0.0.1:8000
+        run: php artisan dusk
+
+      - name: Upload Dusk screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dusk-screenshots
+          path: tests/Browser/screenshots
+          if-no-files-found: ignore
+
+      - name: Upload Dusk console logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dusk-console
+          path: tests/Browser/console
+          if-no-files-found: ignore
+
+      - name: Stop Laravel server
+        if: always()
+        run: pkill -f "php artisan serve"
