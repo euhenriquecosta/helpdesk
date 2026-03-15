@@ -53,6 +53,11 @@ if [ "$CONTAINER_MODE" = "app" ]; then
         echo "Running seeders..."
         php artisan db:seed --force
     fi
+
+    if [ -n "${APP_ADMIN_NAME:-}" ] && [ -n "${APP_ADMIN_EMAIL:-}" ] && [ -n "${APP_ADMIN_PASSWORD:-}" ]; then
+        echo "Creating admin user..."
+        php artisan create:user "$APP_ADMIN_NAME" "$APP_ADMIN_EMAIL" "$APP_ADMIN_PASSWORD" --admin || true
+    fi
 else
     echo "Skipping database initializations for mode: $CONTAINER_MODE"
 fi
