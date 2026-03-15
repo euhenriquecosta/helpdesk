@@ -25,6 +25,12 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
 - Check for existing components to reuse before writing a new one.
 
+## Flash Messages (PHPFlasher + Noty)
+- This project uses PHPFlasher with Noty adapter for flash notifications. It auto-intercepts Laravel session flash messages.
+- You MUST use `->with('success', '...')`, `->with('error', '...')`, `->with('warning', '...')`, or `->with('info', '...')` as flash keys.
+- NEVER use `->with('status', '...')` or `->with('message', '...')` — these keys are NOT intercepted by PHPFlasher and will be silently ignored.
+- The flash_bag mapping is configured in `config/flasher.php`. Assets are auto-injected (no `@flasher_render` directive needed).
+
 ## Verification Scripts
 - Do not create verification scripts or tinker when tests cover that functionality and prove it works. Unit and feature tests are more important.
 

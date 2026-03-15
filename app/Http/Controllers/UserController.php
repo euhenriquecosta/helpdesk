@@ -27,13 +27,13 @@ class UserController extends Controller
         ]);
 
         return to_route('settings.index', ['tab' => 'users'])
-            ->with('status', 'Usuário criado com sucesso!');
+            ->with('success', 'Usuário criado com sucesso!');
     }
 
     public function update(Request $request, User $user): RedirectResponse
     {
         if ($user->id === auth()->id()) {
-            return back()->with('status', 'Você não pode alterar sua própria função.');
+            return back()->with('error', 'Você não pode alterar sua própria função.');
         }
 
         $validated = $request->validate([
@@ -42,17 +42,17 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return back()->with('status', 'Função atualizada com sucesso!');
+        return back()->with('success', 'Função atualizada com sucesso!');
     }
 
     public function destroy(User $user): RedirectResponse
     {
         if ($user->id === auth()->id()) {
-            return back()->with('status', 'Você não pode deletar sua própria conta por aqui.');
+            return back()->with('error', 'Você não pode deletar sua própria conta por aqui.');
         }
 
         $user->delete();
 
-        return back()->with('status', 'Usuário deletado com sucesso!');
+        return back()->with('success', 'Usuário deletado com sucesso!');
     }
 }

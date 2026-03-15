@@ -13,7 +13,8 @@
         "laravel/framework": "^12.0",
         "laravel/octane": "^2.15",
         "laravel/tinker": "^2.10.1",
-        "mallardduck/blade-lucide-icons": "^1.24"
+        "mallardduck/blade-lucide-icons": "^1.24",
+        "php-flasher/flasher-noty-laravel": "^2.5"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.6",

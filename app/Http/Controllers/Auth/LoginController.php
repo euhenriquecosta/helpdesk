@@ -26,7 +26,7 @@ class LoginController extends Controller
             return redirect('dashboard');
         }
 
-        return back()->with(['message' => 'E-mail ou senha incorretos!']);
+        return back()->with('error', 'E-mail ou senha incorretos!');
     }
 
     public function destroy(Request $request)

@@ -38,7 +38,7 @@ class SettingsController extends Controller
         Auth::user()->update($validated);
 
         return redirect()->route('settings.index', ['tab' => 'profile'])
-            ->with('status', 'Perfil atualizado com sucesso!');
+            ->with('success', 'Perfil atualizado com sucesso!');
     }
 
     public function updatePassword(Request $request)
@@ -53,7 +53,7 @@ class SettingsController extends Controller
         ]);
 
         return redirect()->route('settings.index', ['tab' => 'password'])
-            ->with('status', 'Senha atualizada com sucesso!');
+            ->with('success', 'Senha atualizada com sucesso!');
     }
 
     public function destroy(Request $request)

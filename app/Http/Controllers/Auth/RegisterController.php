@@ -17,9 +17,9 @@ class RegisterController extends Controller
     public function store(MakeRegisterRequest $request): RedirectResponse
     {
         if ($request->attempt()) {
-            return back()->with(['message' => 'Registro deu certo']);
+            return back()->with('success', 'Registro realizado com sucesso!');
         }
 
-        return back()->with(['message' => 'Registro não deu certo']);
+        return back()->with('error', 'Falha ao realizar o registro.');
     }
 }
