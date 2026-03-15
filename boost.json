@@ -9,5 +9,8 @@
         "codex",
         "opencode"
     ],
-    "guidelines": []
+    "guidelines": [
+        "laravel/octane"
+    ],
+    "herd_mcp": true
 }
