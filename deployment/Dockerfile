@@ -13,7 +13,7 @@ RUN composer install \
     --apcu-autoloader --ansi --no-scripts
 
 # Stage 2: Gerar assets
-FROM node:24-alpine as assets
+FROM node:24-alpine AS assets
 WORKDIR /src
 
 COPY package*.json ./
@@ -23,7 +23,7 @@ COPY . .
 RUN npm run build
 
 # Stage 3: Runtime
-FROM matizzee/php:octane-8.4
+FROM --platform=linux/amd64 matizzee/php:octane-8.4
 
 ARG APP_USER=app
 ARG WWWUSER=1000
