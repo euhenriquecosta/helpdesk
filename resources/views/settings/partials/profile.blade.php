@@ -49,7 +49,7 @@
 
             <x-modal title="Confirmar exclusão de conta" size="max-w-lg">
                 <x-slot name="trigger">
-                    <x-button variant="destructive">
+                    <x-button variant="destructive" dusk="open-delete-modal">
                         Deletar conta
                     </x-button>
                 </x-slot>
@@ -81,7 +81,7 @@
                             <x-button type="button" variant="ghost" @click="$dispatch('close-modal')">
                                 Cancelar
                             </x-button>
-                            <x-button type="submit" variant="destructive">
+                            <x-button type="submit" variant="destructive" dusk="modal-confirm-delete">
                                 Deletar conta
                             </x-button>
                         </div>

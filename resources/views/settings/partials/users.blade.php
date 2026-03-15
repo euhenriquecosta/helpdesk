@@ -7,7 +7,7 @@
 
         <x-modal title="Novo Usuário" size="max-w-lg">
             <x-slot name="trigger">
-                <x-button class="px-4">
+                <x-button class="px-4" dusk="open-create-user-modal">
                     <x-lucide-plus class="size-4" />
                     Novo
                 </x-button>
