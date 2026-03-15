@@ -38,7 +38,7 @@
                     <span>Redefinir Senha</span>
                 </a>
 
-                @if (auth()->user()->role === 'admin')
+                @can('manage-users')
                     <a
                         href="{{ route('settings.index', ['tab' => 'users']) }}"
                         @class([
@@ -50,7 +50,7 @@
                         <x-lucide-shield class="size-4" />
                         <span>Usuários</span>
                     </a>
-                @endif
+                @endcan
             </aside>
 
             {{-- Conteúdo da Aba Ativa --}}

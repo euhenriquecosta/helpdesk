@@ -16,9 +16,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password.update');
     Route::delete('/settings/account', [SettingsController::class, 'destroy'])->name('settings.account.destroy');
 
-    Route::post('/users', [UserController::class, 'store'])->name('users.store');
-    Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::middleware('can:manage-users')->group(function () {
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
 });
 
 require __DIR__.'/auth.php';
